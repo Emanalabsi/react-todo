@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ToDO with antd
 Your task is to create a todo app, using [Ant Design of React](https://ant.design/docs/react/introduce) OR [MUI](https://mui.com/)
 
@@ -10,3 +11,6 @@ Try to play with components using Form, card, notification, message, Date picker
 - use message to alert user with detailed messages
 - use confirm before delete any todo
 - only display specific number of todos in every page with pagination
+=======
+# react-todo
+>>>>>>> 55bc474e88f38dfb2dbe84e8ecac403b33a7aa00
