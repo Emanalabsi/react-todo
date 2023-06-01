@@ -2,28 +2,27 @@ import { useState } from 'react';
 
 const useTodos = (initialValue = []) => {
   const [todos, setTodos] = useState(initialValue);
-  return {
-    todos,
-    addTodo: (text) => {
-      if (text !== '') {
-        setTodos(todos.concat({ text, checked: false }));
-      }
-    },
-    checkTodo: (idx) => {
-      setTodos(
-        todos.map((todo, index) => {
-          if (idx === index) {
-            todo.checked = !todo.checked;
-          }
-          return todo;
-        })
-      );
-    },
 
-    deleteTodo: (idx) => {
-      setTodos(todos.filter((todo, index) => index !== idx));
-    },
+  const addTodo = (text) => {
+    return todos.concat({ text, checked: false });
   };
+
+  const checkTodo = (idx) => {
+    setTodos(
+      todos.map((todo, index) => {
+        if (idx === index) {
+          todo.checked = !todo.checked;
+        }
+        return todo;
+      })
+    );
+  };
+
+  const deleteTodo = (idx) => {
+    return todos.filter((_, index) => idx !== index);
+  };
+
+  return { todos, addTodo, deleteTodo, checkTodo };
 };
 
 export default useTodos;

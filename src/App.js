@@ -6,7 +6,8 @@ import useTodos from './hooks/useTodos';
 import TodoList from './components/TodoList';
 
 const App = (props) => {
-  const { inputValue, changeInput, keyChange, clearInput } = useInput();
+  const { inputValue, changeInput, handleInputKeyPress, clearInput } =
+    useInput();
   const { todos, addTodo, checkTodo, deleteTodo } = useTodos();
 
   const clearInputAndAddTodo = () => {
@@ -20,12 +21,14 @@ const App = (props) => {
         inputValue={inputValue}
         onInputChange={changeInput}
         onButtonClick={clearInputAndAddTodo}
-        onInputKeyPress={(event) => keyChange(event, clearInputAndAddTodo)}
+        onInputKeyPress={(event) =>
+          handleInputKeyPress(event, clearInputAndAddTodo)
+        }
       />
       <TodoList
-        items={todos}
-        onItemCheck={(idx) => checkTodo(idx)}
-        onItemDelete={(idx) => deleteTodo(idx)}
+        todos={todos}
+        onTodoCheck={(idx) => checkTodo(idx)}
+        onTodoDelete={(idx) => deleteTodo(idx)}
       />
     </Layout>
   );

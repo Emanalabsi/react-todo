@@ -1,20 +1,28 @@
 import { useState } from 'react';
+
+const KEY_ENTER = 13;
+
 const useInput = (initialValue = '') => {
-  const [inputValue, setInputValue] = useState(initialValue);
+  const [value, setValue] = useState(initialValue);
 
-  return {
-    inputValue,
-    changeInput: (event) => setInputValue(event.target.value),
-    clearInput: () => setInputValue(''),
-    keyChange: (event, callback) => {
-      if (event.which === 13 || event.keyCode === 13) {
-        callback(inputValue);
-        return true;
-      }
-
-      return false;
-    },
+  const changeInput = (event) => {
+    setValue(event.target.value);
   };
+
+  const clearInput = () => {
+    setValue('');
+  };
+
+  handleInputKeyPress = (event, callback) => {
+    if (event.which === KEY_ENTER || event.keyCode === KEY_ENTER) {
+      callback(value);
+      return true;
+    }
+
+    return false;
+  };
+
+  return { value, changeInput, clearInput, handleInputKeyPress };
 };
 
 export default useInput;
