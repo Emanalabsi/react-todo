@@ -13,7 +13,7 @@ const useInput = (initialValue = '') => {
     setValue('');
   };
 
-  handleInputKeyPress = (event, callback) => {
+ const handleInputKeyPress = (event, callback) => {
     if (event.which === KEY_ENTER || event.keyCode === KEY_ENTER) {
       callback(value);
       return true;
